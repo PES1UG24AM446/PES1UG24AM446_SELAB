@@ -1,0 +1,81 @@
+$ python -m pytest -q --tb=line test_spam_scoring.py
+F.FFFF                                                                   [100%]
+=================================== FAILURES ===================================
+  + Exception Group Traceback (most recent call last):
+  |   File "./spam-baseline/test_spam_scoring.py", line 15, in test_sender_domain_handles_arbitrary_input
+  |     @given(possible_inputs)
+  |                    ^^^
+  |   File "./venv/lib/python3.12/site-packages/hypothesis/core.py", line 1730, in _raise_to_user
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 3 distinct failures in explicit examples. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "./spam-baseline/test_spam_scoring.py", line 20, in test_sender_domain_handles_arbitrary_input
+    |     domain = sender_domain(value)
+    |              ^^^^^^^^^^^^^^^^^^^^
+    |   File "./spam-baseline/spam_scoring.py", line 2, in sender_domain
+    |     return email.split('@')[1].lower()
+    |            ~~~~~~~~~~~~~~~~^^^
+    | IndexError: list index out of range
+    | Failing explicit example: test_sender_domain_handles_arbitrary_input(
+    |     value='',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "./spam-baseline/test_spam_scoring.py", line 23, in test_sender_domain_handles_arbitrary_input
+    |     assert value.count("@") == 1
+    | AssertionError: assert 2 == 1
+    |  +  where 2 = <built-in method count of str object at 0x102939ab0>('@')
+    |  +    where <built-in method count of str object at 0x102939ab0> = 'alice@@example.com'.count
+    | Failing explicit example: test_sender_domain_handles_arbitrary_input(
+    |     value='alice@@example.com',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "./spam-baseline/test_spam_scoring.py", line 24, in test_sender_domain_handles_arbitrary_input
+    |     assert domain and domain == domain.lower()
+    | AssertionError: assert ('')
+    | Failing explicit example: test_sender_domain_handles_arbitrary_input(
+    |     value='alice@',
+    | )
+    +------------------------------------
+./venv/lib/python3.12/site-packages/hypothesis/core.py:1730: ExceptionGroup: Hypothesis found 3 distinct failures in explicit examples. (3 sub-exceptions)
+E   ValueError: substring not found
+    (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    Failing explicit example: test_first_link_handles_arbitrary_input(
+        value='',
+    )
+./spam-baseline/spam_scoring.py:5: ValueError: substring not found
+E   AssertionError: assert 'http://0.example/A).' == 'http://0.example/A'
+      
+      - http://0.example/A
+      + http://0.example/A).
+      ?                   ++
+    Failing test case: test_first_link_extracts_first_http_url(
+        # The test always failed when commented parts were varied together.
+        host='0',  # or any other generated value
+        path='A',  # or any other generated value
+        whitespace=' ',  # or any other generated value
+        scheme='http',  # or any other generated value
+    )
+./spam-baseline/test_spam_scoring.py:53: AssertionError: assert 'http://0.example/A).' == 'http://0.example/A'
+E   ZeroDivisionError: division by zero
+    (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    Failing explicit example: test_shout_ratio_matches_letter_counts(
+        value='',
+    )
+./spam-baseline/spam_scoring.py:14: ZeroDivisionError: division by zero
+E   ZeroDivisionError: division by zero
+    Failing test case: test_punctuation_and_digits_do_not_change_ratio(
+        text='',
+        noise='',  # or any other generated value
+    )
+./spam-baseline/spam_scoring.py:14: ZeroDivisionError: division by zero
+=========================== short test summary info ============================
+FAILED test_spam_scoring.py::test_sender_domain_handles_arbitrary_input - Exc...
+FAILED test_spam_scoring.py::test_first_link_handles_arbitrary_input - ValueE...
+FAILED test_spam_scoring.py::test_first_link_extracts_first_http_url - Assert...
+FAILED test_spam_scoring.py::test_shout_ratio_matches_letter_counts - ZeroDiv...
+FAILED test_spam_scoring.py::test_punctuation_and_digits_do_not_change_ratio
+5 failed, 1 passed in 1.58s
+[exit 1]

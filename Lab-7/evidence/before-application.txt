@@ -1,0 +1,27 @@
+$ python spam_scoring.py
+==== Running sender_domain ====
+Enter a sender email (e.g. offers@Deals.com): Sender Domain: deals.com
+
+==== Running first_link ====
+Enter a message containing a link: First Link: https://example.test/deals
+
+==== Running shout_ratio ====
+Enter a message (e.g. FREE prize NOW): Uppercase Ratio: 0.5833333333333334
+[exit 0]
+
+$ python spam_scoring.py
+==== Running sender_domain ====
+Enter a sender email (e.g. offers@Deals.com): Sender Domain: deals.com
+
+==== Running first_link ====
+Enter a message containing a link: Traceback (most recent call last):
+  File "./spam-baseline/spam_scoring.py", line 33, in <module>
+    main()
+  File "./spam-baseline/spam_scoring.py", line 24, in main
+    result = first_link(user_input)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "./spam-baseline/spam_scoring.py", line 5, in first_link
+    start = text.index('http')
+            ^^^^^^^^^^^^^^^^^^
+ValueError: substring not found
+[exit 1]
