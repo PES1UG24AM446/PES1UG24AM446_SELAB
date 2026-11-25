@@ -47,7 +47,7 @@ E   ValueError: substring not found
     )
 ./spam-baseline/spam_scoring.py:5: ValueError: substring not found
 E   AssertionError: assert 'http://0.example/A).' == 'http://0.example/A'
-      
+
       - http://0.example/A
       + http://0.example/A).
       ?                   ++
