@@ -80,6 +80,7 @@ class GameEngine:
 
     def update_lasers(self):
         active_lasers = []
+        fragments = []
         for laser in self.lasers:
             laser.update()
             if laser.y < -laser.radius:
@@ -87,10 +88,12 @@ class GameEngine:
             for meteor in self.meteors:
                 if laser.hits(meteor):
                     self.meteors.remove(meteor)
+                    fragments.extend(meteor.fragments())
                     break
             else:
                 active_lasers.append(laser)
         self.lasers = active_lasers
+        self.meteors.extend(fragments)
 
     def draw(self):
         self.screen.fill(BG)

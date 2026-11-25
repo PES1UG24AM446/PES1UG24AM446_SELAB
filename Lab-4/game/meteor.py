@@ -1,6 +1,7 @@
 import pygame
 import random
 import math
+from copy import copy
 
 class Meteor:
     def __init__(self, width):
@@ -25,6 +26,19 @@ class Meteor:
 
     def off_screen(self, height):
         return self.y > height + 60
+
+    def fragments(self):
+        if self.radius < 22:
+            return []
+        fragments = []
+        for side in (-1, 1):
+            fragment = copy(self)
+            fragment.radius = self.radius // 2
+            fragment.x += side * fragment.radius
+            fragment.vx += side * 2.2
+            fragment.rot_speed = side * 2.5
+            fragments.append(fragment)
+        return fragments
 
     def collides(self, rect):
         cx,cy=rect.centerx,rect.centery
