@@ -2,6 +2,8 @@
 
 The following AI-assisted review checks the published requirements for clarity, testability and relevance to scenario 05. The peer-exchange activity calls for a separate classmate’s review.
 
+The [fillable peer exchange packet](Lab1_Peer_Exchange_Packet.pdf) contains the submitted requirements, space for a classmate’s comments on each requirement, and an author revision record.
+
 | Requirement | Comments | Check in the submitted requirements |
 | --- | --- | --- |
 | FR-001 | State whether 100 credits is an exact total and what happens to a stored bid on failure. | The 99, 100 and 101 credit cases distinguish the boundary, and rejected submissions leave the stored bid unchanged. |
