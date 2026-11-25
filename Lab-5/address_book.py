@@ -18,11 +18,12 @@ def addContact(fullName, phone, email="", city="Unknown"):
 
 
 def contactId(fullName):
-    return hashlib.md5(fullName.encode(), usedforsecurity=False).hexdigest()[:6]
+    digest = hashlib.md5(fullName.encode(), usedforsecurity=False)
+    return digest.hexdigest()[:6]
 
 
 def searchContacts(text):
-    found=[]
+    found = []
     for name, info in contacts.items():
         if text.lower() in name.lower() or text in info["phone"]:
             found.append(name)
@@ -82,8 +83,11 @@ def main():
     exportCsv()
     backupBook()
     restored = restoreBook()
-    print("Contacts restored:", len(restored), "| first:",sorted(restored)[0])
-    print("Restored contacts match the in-memory address book:", restored == contacts)
+    print("Contacts restored:", len(restored), "| first:", sorted(restored)[0])
+    print(
+        "Restored contacts match the in-memory address book:",
+        restored == contacts,
+    )
 
 
 main()
