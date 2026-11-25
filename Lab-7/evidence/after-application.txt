@@ -1,0 +1,21 @@
+$ python spam_scoring.py
+==== Running sender_domain ====
+Enter a sender email (e.g. offers@Deals.com): Sender Domain: deals.com
+
+==== Running first_link ====
+Enter a message containing a link: First Link: https://example.test/deals
+
+==== Running shout_ratio ====
+Enter a message (e.g. FREE prize NOW): Uppercase Ratio: 0.5833333333333334
+[exit 0]
+
+$ python spam_scoring.py
+==== Running sender_domain ====
+Enter a sender email (e.g. offers@Deals.com): Sender Domain: deals.com
+
+==== Running first_link ====
+Enter a message containing a link: First Link: None
+
+==== Running shout_ratio ====
+Enter a message (e.g. FREE prize NOW): Uppercase Ratio: 0.0
+[exit 0]
