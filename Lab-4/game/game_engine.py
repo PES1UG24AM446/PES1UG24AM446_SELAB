@@ -6,6 +6,8 @@ from game.meteor import Meteor
 WIDTH,HEIGHT=700,520
 FPS=60
 BG=(8,5,20)
+ORB_INTERVAL = 6 * FPS
+SHIELD_DURATION = 8 * FPS
 
 
 class Laser:
@@ -26,6 +28,27 @@ class Laser:
         pygame.draw.line(screen, (125, 251, 255), (self.x, self.y - 8), (self.x, self.y + 8), 3)
 
 
+class ShieldOrb:
+    radius = 10
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def update(self):
+        self.y += 2.5
+
+    def collected_by(self, ship):
+        dx = self.x - ship.rect.centerx
+        dy = self.y - ship.rect.centery
+        return dx * dx + dy * dy <= (self.radius + 16) ** 2
+
+    def draw(self, screen):
+        center = (round(self.x), round(self.y))
+        pygame.draw.circle(screen, (70, 215, 250), center, self.radius, 2)
+        pygame.draw.circle(screen, (160, 245, 255), center, 4)
+
+
 class GameEngine:
     def __init__(self):
         pygame.init()
@@ -41,6 +64,9 @@ class GameEngine:
         self.ship=Ship(WIDTH//2,HEIGHT-80)
         self.meteors=[]
         self.lasers = []
+        self.orbs = []
+        self.orb_timer = 0
+        self.shield_frames = 0
         self.timer=0
         self.spawn_interval=60
         self.score=0
@@ -64,6 +90,7 @@ class GameEngine:
         if self.game_over or not self.started: return
         keys=pygame.key.get_pressed()
         self.ship.move(keys,WIDTH,HEIGHT)
+        self.update_shields()
         self.timer+=1
         if self.timer>=self.spawn_interval:
             self.meteors.append(Meteor(WIDTH))
@@ -72,11 +99,33 @@ class GameEngine:
         for meteor in self.meteors:
             meteor.update()
         self.update_lasers()
+        remaining_meteors = []
         for meteor in self.meteors:
             if meteor.collides(self.ship.rect):
-                self.game_over=True
-        self.meteors=[m for m in self.meteors if not m.off_screen(HEIGHT)]
+                if self.shield_frames:
+                    self.shield_frames = 0
+                    continue
+                self.game_over = True
+            if not meteor.off_screen(HEIGHT):
+                remaining_meteors.append(meteor)
+        self.meteors = remaining_meteors
         self.score+=1
+
+    def update_shields(self):
+        self.shield_frames = max(0, self.shield_frames - 1)
+        self.orb_timer += 1
+        if self.orb_timer >= ORB_INTERVAL:
+            self.orbs.append(ShieldOrb(random.randint(24, WIDTH - 24), -12))
+            self.orb_timer = 0
+
+        active_orbs = []
+        for orb in self.orbs:
+            orb.update()
+            if orb.collected_by(self.ship):
+                self.shield_frames = SHIELD_DURATION
+            elif orb.y <= HEIGHT + orb.radius:
+                active_orbs.append(orb)
+        self.orbs = active_orbs
 
     def update_lasers(self):
         active_lasers = []
@@ -102,7 +151,11 @@ class GameEngine:
         for m in self.meteors: m.draw(self.screen)
         for laser in self.lasers:
             laser.draw(self.screen)
+        for orb in self.orbs:
+            orb.draw(self.screen)
         self.ship.draw(self.screen)
+        if self.shield_frames:
+            pygame.draw.circle(self.screen, (80, 220, 250), self.ship.rect.center, 24, 2)
         sc=self.font.render(f"Time: {self.score//60}s",True,(200,200,240))
         self.screen.blit(sc,(10,10))
         if not self.started:
