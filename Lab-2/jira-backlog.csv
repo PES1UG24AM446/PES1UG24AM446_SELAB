@@ -1,34 +1,16 @@
-Work item ID,Parent,Work type,Summary,Description,Priority,Story Points,Status
-1,,Epic,Student Bidding,"Students enter ranked, eligible bids within their credit budget.",,,To Do
-2,,Epic,Allocation and Waitlist,The registrar runs allocation and manages the ranked waitlist.,,,To Do
-3,,Epic,Roster Oversight,Students receive outcomes and the registrar manages exceptions with an audit trail.,,,To Do
-4,1,Story,S01 Rank selected electives,"As a student, I want to assign a unique rank to each choice so that the solver knows my preferences.
-Acceptance criteria: Reject duplicate or missing ranks and preserve the displayed order on reload.
-Traceability: FR-002",High,3,To Do
-5,1,Story,S02 Allocate bidding credits,"As a student, I want to see the credits remaining so that I can submit exactly 100 credits.
-Acceptance criteria: Accept 60 + 40 and reject 60 + 41 or 60 + 39 without recording a bid.
-Traceability: FR-001",High,3,To Do
-6,1,Story,S03 Validate prerequisites,"As a student, I want to see unmet prerequisites before saving so that I can replace ineligible electives.
-Acceptance criteria: Reject a choice with a missing prerequisite and identify the course that is missing.
-Traceability: FR-001",High,5,To Do
-7,1,Story,S04 Block timetable conflicts,"As a student, I want to see clashes with my fixed timetable so that I bid on electives I can attend.
-Acceptance criteria: For a one-minute overlap, show both courses and reject the bid. Accept adjacent slots.
-Traceability: FR-003",High,5,To Do
-8,2,Story,S05 Run allocation solver,"As a academic registrar, I want to allocate seats from eligible ranked bids so that capacity and timetable rules are respected.
-Acceptance criteria: Given one seat and two eligible bids, assign it once and log the deterministic tie-break.
-Traceability: FR-001 / FR-003",High,8,To Do
-9,3,Story,S06 Show allocation outcome,"As a student, I want to see my result after publication so that I know my allocated or waitlisted status.
-Acceptance criteria: Show results only after publication and only to the student who owns them.
-Traceability: FR-004",High,3,To Do
-10,2,Story,S07 Promote next eligible student,"As a academic registrar, I want to reassign a vacated seat so that eligible waitlisted students can claim it.
-Acceptance criteria: Skip an ineligible entry and allocate exactly once to the first eligible candidate.
-Traceability: FR-004",Medium,5,To Do
-11,2,Story,S08 Notify a promoted student,"As a student, I want to hear when I receive a freed seat so that I can adjust my schedule.
-Acceptance criteria: Trigger one notification per promotion and record delivery within five minutes.
-Traceability: FR-004",Medium,3,To Do
-12,3,Story,S09 Override a roster entry,"As a academic registrar, I want to override an exceptional allocation with a reason so that I can correct a roster transparently.
-Acceptance criteria: Reject blank reasons and non-registrars. Save the correct roster and actor with a valid reason.
-Traceability: FR-005",Medium,5,To Do
-13,3,Story,S10 Review the override audit trail,"As a academic registrar, I want to retrieve a timestamped audit history so that I can investigate allocation disputes.
-Acceptance criteria: Show the actor, reason, and previous and new roster values in under two seconds.
-Traceability: NFR-002",High,3,To Do
+Jira key,Story,Parent epic,Story points,Placement,Status
+SCRUM-9,Distribute 100 Bidding Credits,Elective Bidding & Preference Ranking,8,Elective Sprint 1,Done
+SCRUM-10,Browse Available Electives,Elective Bidding & Preference Ranking,3,Elective Sprint 1,Done
+SCRUM-11,Rank Elective Preferences,Elective Bidding & Preference Ranking,5,Elective Sprint 1,Done
+SCRUM-13,Validate Prerequisite Completion,Eligibility & Timetable Validation,5,Elective Sprint 1,Done
+SCRUM-14,Detect and Block Timetable Collisions,Eligibility & Timetable Validation,8,Elective Sprint 1,Done
+SCRUM-12,Submit and Lock Bid with Receipt,Elective Bidding & Preference Ranking,5,Elective Sprint 2,Done
+SCRUM-15,Show Conflict Details and Fix Options,Eligibility & Timetable Validation,3,Elective Sprint 2,Done
+SCRUM-16,Run Allocation Solver,"Allocation, Waitlist & Roster",13,Elective Sprint 2,Done
+SCRUM-19,View Allocation Result and Request Reallocation,"Allocation, Waitlist & Roster",3,Elective Sprint 2,Done
+SCRUM-17,Waitlist Unallocated Students,"Allocation, Waitlist & Roster",5,Backlog,To Do
+SCRUM-18,Auto-Reallocate Vacated Seats,"Allocation, Waitlist & Roster",8,Backlog,To Do
+SCRUM-20,Solver Performance Under 30 Seconds,"Allocation, Waitlist & Roster",5,Backlog,To Do
+SCRUM-21,Registrar Manual Override with Justification,"Registrar Override, Notification & Audit",5,Backlog,To Do
+SCRUM-22,Immutable Audit Log,"Registrar Override, Notification & Audit",8,Backlog,To Do
+SCRUM-23,Send Allocation Notifications,"Registrar Override, Notification & Audit",3,Backlog,To Do

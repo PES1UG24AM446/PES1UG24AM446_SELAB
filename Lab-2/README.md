@@ -1,6 +1,10 @@
 # Lab 2 Agile Backlog and Sprint Simulation
 
-- [Jira backlog CSV](jira-backlog.csv) includes three epics and ten estimated stories. Each story includes acceptance criteria and a Lab 1 reference.
-- [Simulation report](Lab2_Sprint_Simulation.pdf) includes two one-week sprint plans, board snapshots, computed burndown charts and answers to the four reflection questions.
+- [Live Jira backlog](https://rollanharsha.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?epics=visible) shows the four epics and remaining elective stories.
+- [Remaining elective stories by priority](https://rollanharsha.atlassian.net/issues/?jql=issueKey+in+%28SCRUM-17%2CSCRUM-18%2CSCRUM-20%2CSCRUM-21%2CSCRUM-22%2CSCRUM-23%29+ORDER+BY+priority+DESC%2C+Rank+ASC) shows the high-priority work first.
+- [Jira burndown report](https://rollanharsha.atlassian.net/jira/software/projects/SCRUM/boards/1/reports/burndown?source=overview) lets you select either completed elective sprint.
+- [Submission PDF](Lab2_Jira_Submission.pdf) contains the four reflection answers and the live backlog, estimates, active boards, completion confirmations and two native burndown charts.
+- [Story snapshot](jira-backlog.csv) records all 15 elective stories and their placements.
+- [Original screenshots](evidence/) are available as individual images.
 
-The simulations were prepared offline. The account sign-in screen blocked live Jira access, so Jira screenshots and the instructor demonstration remain outstanding. Use the [Atlassian CSV import documentation](https://support.atlassian.com/jira-cloud-administration/docs/import-data-from-a-csv-file) for field mapping.
+Elective Sprint 1 closed with **29 of 29 points** and Elective Sprint 2 closed with **24 of 24 points**. The exercise used one-week Jira timeboxes and accelerated the live transitions into one lab session.

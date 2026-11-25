@@ -19,3 +19,4 @@ Lasers destroy small meteors and split large ones into two diverging fragments. 
 - [Before video](before.mp4) shows repeated SPACE presses during flight in the untouched starter.
 - [After video](after.mp4) shows laser fire and fragments, orb collection, the 2× multiplier and the shield taking a hit. The recording uses reproducible, scripted play with a short lead-in and deterministic object placement.
 - [AI interaction record](Lab4_AI_Interaction.pdf) includes chat excerpts and the implementation and verification log.
+- [Complete ChatGPT conversation snapshot](https://chatgpt.com/s/cx_6b06c9497bf0819197d00c62044f49ad) provides the shareable chat history.

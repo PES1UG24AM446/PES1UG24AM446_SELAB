@@ -12,7 +12,7 @@ python -m coverage report -m --fail-under=90
 
 | Suite | Tests passed | Lines | Branches | Run evidence |
 | --- | ---: | ---: | ---: | --- |
-| Code coverage | 11 | 39/39 (100%) | | [Terminal image](evidence/line-coverage.png) |
-| Branch coverage | 21 | 39/39 (100%) | 26/26 (100%) | [Terminal image](evidence/branch-coverage.png) |
+| Code coverage | 11 | 39/39 (100%) | | [Terminal screenshot](evidence/screenshots/line-coverage.jpg) |
+| Branch coverage | 21 | 39/39 (100%) | 26/26 (100%) | [Terminal screenshot](evidence/screenshots/branch-coverage.jpg) |
 
-The second suite checks link counts at 0, 1, 3, and 4, the sender-discount floor, classification at 4 and 8, and the exact inbox ratio boundaries of 20% and 50%. The images render the captured command output. Plain-text copies are in the same folder.
+The second suite checks link counts at 0, 1, 3, and 4, the sender-discount floor, classification at 4 and 8, and the exact inbox ratio boundaries of 20% and 50%. The screenshots show the recorded command output replayed in a terminal emulator. The raw output is in [evidence](evidence/).
